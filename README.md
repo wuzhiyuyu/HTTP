@@ -9,3 +9,29 @@ HTTP头部扩展（HTTP headers/HTTP Cookies
 * 认证  
 * 代理和隧道  
 * 会话  
+  
+### HTTP流  
+客户端与服务端信息交互过程  
+1. 打开TCP连接：发送请求及接受响应  
+2. 发送一个HTTP报文  
+3. 读取服务端返回报文信息  
+4. 关闭连接或者为后续请求重用连接  
+  
+### HTTP请求报文  
+例：  
+```
+GET/HTTP/1.1  
+Host:developer.mozilla.org  
+Accept-Language:fr  
+```
+* Method：GET/POST/OPTIONS/HEAD  
+* 路径Path  
+* HTTP协议版本号  
+* 为服务端表达其他信息的可选头部headers  
+* 对于一些像POST这样的方法，报文的body就包含了发送的资源，这与响应报文的body类似  
+  
+### 响应报文  
+* HTTP协议版本号  
+* 状态码：告知请求执行成功或失败，以及失败原因  
+* 状态信息  
+* 可选项：响应报文中更常见的包含获取的资源body 
