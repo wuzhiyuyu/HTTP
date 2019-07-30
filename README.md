@@ -18,7 +18,7 @@ HTTP头部扩展（HTTP headers/HTTP Cookies
 4. 关闭连接或者为后续请求重用连接  
   
 ### HTTP请求报文  
-例：  
+例：
 ```
 GET/HTTP/1.1  
 Host:developer.mozilla.org  
@@ -31,6 +31,9 @@ Accept-Language:fr
 * 对于一些像POST这样的方法，报文的body就包含了发送的资源，这与响应报文的body类似  
   
 ### 响应报文  
+```
+
+```
 * HTTP协议版本号  
 * 状态码：告知请求执行成功或失败，以及失败原因  
 * 状态信息  
