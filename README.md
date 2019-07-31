@@ -79,5 +79,32 @@ Cache-Control: must-revalidate
 在请求中与Cache-Control: no-cache相同，但在响应头不支持  
   
 新鲜度 缓存驱逐  
-**缓存寿命**一般包含在max-age/Expires/Date/Last-Modified中，齐、其值=max-age=（date-Last-Modified)/1
-EexpirationTime = responseTime + freshnessLifetime - currentAge  xpires
+**缓存寿命**一般包含在max-age/Expires/Date/Last-Modified中，齐、其值=max-age=(date-Last-Modified)/10  
+缓存失效时间EexpirationTime = responseTime + freshnessLifetime - currentAge  
+  
+### 缓存验证  
+1. 用户点击刷新按钮时会开始缓存验证  
+2. 如果缓存的响应头信息里含有*Cache-control: must-revalidate*，在浏览的过程中也会触发缓存验证  
+3. 在浏览器偏好设置里设置Advanced->Cache为强制验证缓存  
+  
+当缓存的文档过期后，需要进行缓存验证或者重新获取资源。只有在服务器返回强校验器或者弱校验器时才会进行验证  
+**ETags**强校验器，如果资源请求的响应头里含有ETag, 客户端可以在后续的请求的头中带上If-None-Match头来验证缓存，若返回200 OK镖师返回正常，304 Not Modified(不返回body)表示浏览器可以使用本地缓存文件，304响应头还可以同时更新缓存文档的过期时间  
+  
+### Vary头响应  
+判断请求新资源还是使用缓存文件，只有当前请求和原始请求头跟缓存响应头里的Vary都匹配，才能使用缓存响应  
+例如，用*Vary:User-Agent*区分移动版和桌面客户端  
+  
+## HTTP Cookies  
+* 会话状态管理  
+* 个性化设置  
+* 浏览器行为跟踪  
+
+
+
+
+
+
+
+
+
+
