@@ -78,4 +78,6 @@ Cache-Control: must-revalidate
 #### Pragma头  
 在请求中与Cache-Control: no-cache相同，但在响应头不支持  
   
-新鲜度 缓存驱逐 
+新鲜度 缓存驱逐  
+**缓存寿命**一般包含在max-age/Expires/Date/Last-Modified中，齐、其值=max-age=（date-Last-Modified)/1
+EexpirationTime = responseTime + freshnessLifetime - currentAge  xpires
