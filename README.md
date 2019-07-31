@@ -98,10 +98,33 @@ Cache-Control: must-revalidate
 * 会话状态管理  
 * 个性化设置  
 * 浏览器行为跟踪  
-
-
-
-
+### 创建Cookie
+#### Set-Cookie响应头部和Cookie请求头部  
+服务器使用响应头部向用户代理发送Cookie信息，服务器通过该头部告知客户端保存Cookie信息
+```
+HTTP/1.0 200 OK  
+Content-type: text/html  
+Set-Cookie: yummy_cookie=choco             //Set-Cookie: <cookie名>=<cookie值>  
+Set-Cookie: tasty_cookie=strawberry  
+  
+[页面内容]  
+```
+之后每对服务器发起一次请求，浏览器都会将之前保存的Cookie信息通过Cookie请求头部再发送给给服务器  
+```
+GET /sample_page.html HTTP/1.1  
+Host: www.example.org  
+Cookie: yummy_cookie=choco; tasty_cookie=strawberry  
+```
+**会话期Cookie**  
+不需要指定过期时间（Expires）或者有效期（Max-Age），在浏览器关闭时自动删除，但有些浏览器提供会话恢复功能  
+**持久性Cookie**  
+指定特定的过期时间或有效期，设定的时间只与客户端相关，而不是服务端  
+```
+Set-Cookie: id=a3fWa; Expires=Wed, 21 Oct 2015 07:28:00 GMT;Secure; HttpOnly  
+```
+**Secure和HttpOnly标记**  
+Secure标记的Cookie只应通过HTTPS协议加密过的请求发送给服务端  
+HttpOnly标记的
 
 
 
