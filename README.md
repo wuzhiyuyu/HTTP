@@ -124,7 +124,29 @@ Set-Cookie: id=a3fWa; Expires=Wed, 21 Oct 2015 07:28:00 GMT;Secure; HttpOnly
 ```
 **Secure和HttpOnly标记**  
 Secure标记的Cookie只应通过HTTPS协议加密过的请求发送给服务端  
-HttpOnly标记的
+HttpOnly标记的只发送给服务端，不会被客户端JS脚本调用  
+**Cookie作用域**  
+即Cookie应该发送给哪些URL  
+*Domain*标识指定哪些主机可以接受Cookie，默认为当前文档的主机（不包含子域名）  
+如果设置 Domain=mozilla.org，则Cookie也包含在子域名中（如developer.mozilla.org）  
+*Path*指定主机下的哪些路径可以接受Cookie（该URL路径必须存在于请求URL中），以字符 %x2F ("/") 作为路径分隔符，子路径也会被匹配。  
+**Doucment.cookies**  
+通过Document.cookie可创建新的Cookie，也可通过该属性访问非HttpOnly标记的Cookie  
+```
+document.cookie = "yummy_cookie=choco";   
+document.cookie = "tasty_cookie=strawberry";   
+console.log(document.cookie);   
+// logs "yummy_cookie=choco; tasty_cookie=strawberry"  
+```
+  
+会话劫持和XSS  
+跨站请求伪造（CSRF）  
+第三方Cookie（如图片广告）  
+禁止追踪Do-Not-Track  
+欧盟Cookie指令  
+僵尸Cookie（删不掉）
+  
+### HTTP访问控制(CORS)  
 
 
 
