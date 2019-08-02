@@ -147,9 +147,31 @@ console.log(document.cookie);
 僵尸Cookie（删不掉）
   
 ### HTTP访问控制(CORS)  
-
-
-
-
+**跨域资源共享（CORS）**当一个资源从与该资源本身所在的服务器不同的域、协议或端口请求一个资源时，资源会发起一个跨域HTTP请求  
+CORS机制允许Web应用服务器进行跨域访问控制，从而使跨域数据传输得以安全进行  
+应用场景：  
+* 由XMLHttpRequest或Fetch发起的跨域HTTP请求  
+* Web字体（CSS中通过@font-face使用跨域字体资源）  
+* WebGL贴图  
+* 使用drawImage将Images/video画面绘制到canvas  
+  
+#### 简单请求  
+不会触发CORS预检请求  
+方法：GET/HEAD/POST  
+规范首部字段：Accept/Accept-Language/Content-Laguage/Content-Type/DPR/Downlink/Save-Date/Viewport-Width/Width  
+Content-Type的值：  
+1. text/plain  
+2. multipart/form-data  
+3. application/x-www-form-urlencoded  
+  
+使用Origin和Access-Control-Allow-Origin能完成最简单的访问控制  
+```
+Access-Control-Allow-Origin：*
+```
+表示该资源可以被任意外域访问
+```
+Access-Control-Allow-Origin:http://foo.example
+```
+即服务端仅允许来自该网站的访问
 
 
